@@ -4,6 +4,8 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { getArticleBySlug } from "@/lib/articles";
 
+export const dynamic = "force-dynamic";
+
 export async function generateMetadata({
   params,
 }: {

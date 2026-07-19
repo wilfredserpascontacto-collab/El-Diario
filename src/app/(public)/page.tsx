@@ -1,6 +1,8 @@
 import { ArticleCard } from "@/components/ArticleCard";
 import { getFeaturedArticles, getRecentArticles } from "@/lib/articles";
 
+export const dynamic = "force-dynamic";
+
 export default async function HomePage() {
   const [featured, recent] = await Promise.all([
     getFeaturedArticles(3),

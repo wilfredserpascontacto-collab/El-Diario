@@ -2,6 +2,8 @@ import { notFound } from "next/navigation";
 import { ArticleCard } from "@/components/ArticleCard";
 import { getArticlesByCategory, getCategoryBySlug } from "@/lib/articles";
 
+export const dynamic = "force-dynamic";
+
 export default async function CategoryPage({
   params,
 }: {
