@@ -8,15 +8,6 @@ export function getCategoryBySlug(slug: string) {
   return prisma.category.findUnique({ where: { slug } });
 }
 
-export function getFeaturedArticles(limit = 3) {
-  return prisma.article.findMany({
-    where: { published: true, featured: true },
-    orderBy: { publishedAt: "desc" },
-    take: limit,
-    include: { category: true },
-  });
-}
-
 export function getRecentArticles(limit = 12) {
   return prisma.article.findMany({
     where: { published: true },

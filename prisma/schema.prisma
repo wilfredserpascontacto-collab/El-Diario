@@ -24,7 +24,6 @@ model Article {
   excerpt       String
   content       String
   coverImageUrl String?
-  featured      Boolean   @default(false)
   published     Boolean   @default(false)
   publishedAt   DateTime?
   categoryId    Int

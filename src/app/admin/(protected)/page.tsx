@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { getAllArticlesForAdmin } from "@/lib/articles";
-import { deleteArticle, toggleFeatured, togglePublished } from "./actions";
+import { deleteArticle, togglePublished } from "./actions";
 import { DeleteArticleForm } from "@/components/admin/DeleteArticleForm";
 
 export default async function AdminDashboardPage() {
@@ -54,11 +54,6 @@ export default async function AdminDashboardPage() {
                       >
                         {article.published ? "Publicada" : "Borrador"}
                       </span>
-                      {article.featured && (
-                        <span className="rounded bg-yellow-100 px-2 py-0.5 text-xs font-medium text-yellow-700 dark:bg-yellow-900 dark:text-yellow-300">
-                          Destacada
-                        </span>
-                      )}
                     </div>
                   </td>
                   <td className="px-4 py-3">
@@ -73,12 +68,6 @@ export default async function AdminDashboardPage() {
                         <input type="hidden" name="id" value={article.id} />
                         <button type="submit" className="text-gray-600 hover:underline dark:text-gray-400">
                           {article.published ? "Despublicar" : "Publicar"}
-                        </button>
-                      </form>
-                      <form action={toggleFeatured}>
-                        <input type="hidden" name="id" value={article.id} />
-                        <button type="submit" className="text-gray-600 hover:underline dark:text-gray-400">
-                          {article.featured ? "Quitar destacado" : "Destacar"}
                         </button>
                       </form>
                       <DeleteArticleForm id={article.id} action={deleteArticle} />

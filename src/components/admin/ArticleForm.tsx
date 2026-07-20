@@ -17,7 +17,6 @@ type ArticleFormProps = {
     coverImageUrl: string | null;
     categoryId: number;
     published: boolean;
-    featured: boolean;
   };
 };
 
@@ -111,15 +110,6 @@ export function ArticleForm({ action, categories, submitLabel, initialValues }: 
             className="h-4 w-4"
           />
           Publicada
-        </label>
-        <label className="flex items-center gap-2 text-sm text-gray-700 dark:text-gray-300">
-          <input
-            type="checkbox"
-            name="featured"
-            defaultChecked={initialValues?.featured}
-            className="h-4 w-4"
-          />
-          Destacada
         </label>
       </div>
 

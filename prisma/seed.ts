@@ -47,7 +47,6 @@ async function main() {
         "La compañía anunció hoy el lanzamiento de su nuevo modelo de inteligencia artificial, diseñado para automatizar procesos que antes tomaban horas de trabajo manual. Según sus desarrolladores, la herramienta ya está siendo probada por varias empresas del sector.\n\nLos primeros resultados muestran una reducción significativa en los tiempos de producción, aunque los expertos piden cautela y advierten sobre la necesidad de regulación.",
       coverImageUrl:
         "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1200",
-      featured: true,
       published: true,
       publishedAt: new Date(),
       categoryId: tecnologia.id,
@@ -61,7 +60,6 @@ async function main() {
         "En un partido cargado de emoción, el equipo local logró remontar el marcador en los minutos finales para asegurar su clasificación a la final del torneo. Los hinchas celebraron en las calles tras el pitido final.\n\nEl técnico destacó el esfuerzo colectivo del plantel y adelantó que el equipo llega en su mejor momento de la temporada.",
       coverImageUrl:
         "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?w=1200",
-      featured: true,
       published: true,
       publishedAt: new Date(),
       categoryId: deportes.id,
@@ -75,7 +73,6 @@ async function main() {
         "Los últimos datos oficiales indican una desaceleración en el ritmo de crecimiento de los precios, especialmente en alimentos y combustibles. Economistas consultados coinciden en que la tendencia podría mantenerse si continúan las políticas actuales.\n\nSin embargo, advierten que persisten riesgos externos que podrían revertir esta mejora en los próximos meses.",
       coverImageUrl:
         "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=1200",
-      featured: false,
       published: true,
       publishedAt: new Date(),
       categoryId: economia.id,

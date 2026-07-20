@@ -17,11 +17,10 @@ function readArticleFields(formData: FormData) {
   const coverImageUrl = String(formData.get("coverImageUrl") ?? "").trim();
   const categoryId = Number(formData.get("categoryId"));
   const published = formData.get("published") === "on";
-  const featured = formData.get("featured") === "on";
   const slugInput = String(formData.get("slug") ?? "").trim();
   const slug = slugify(slugInput || title);
 
-  return { title, excerpt, content, coverImageUrl, categoryId, published, featured, slug };
+  return { title, excerpt, content, coverImageUrl, categoryId, published, slug };
 }
 
 export async function createArticle(
@@ -30,7 +29,7 @@ export async function createArticle(
 ): Promise<ArticleFormState> {
   await requireAdmin();
 
-  const { title, excerpt, content, coverImageUrl, categoryId, published, featured, slug } =
+  const { title, excerpt, content, coverImageUrl, categoryId, published, slug } =
     readArticleFields(formData);
 
   if (!title || !excerpt || !content || !categoryId || !slug) {
@@ -51,7 +50,6 @@ export async function createArticle(
       coverImageUrl: coverImageUrl || null,
       categoryId,
       published,
-      featured,
       publishedAt: published ? new Date() : null,
     },
   });
@@ -68,7 +66,7 @@ export async function updateArticle(
 ): Promise<ArticleFormState> {
   await requireAdmin();
 
-  const { title, excerpt, content, coverImageUrl, categoryId, published, featured, slug } =
+  const { title, excerpt, content, coverImageUrl, categoryId, published, slug } =
     readArticleFields(formData);
 
   if (!title || !excerpt || !content || !categoryId || !slug) {
@@ -92,7 +90,6 @@ export async function updateArticle(
       coverImageUrl: coverImageUrl || null,
       categoryId,
       published,
-      featured,
       publishedAt: published ? (current.publishedAt ?? new Date()) : null,
     },
   });
@@ -125,21 +122,6 @@ export async function togglePublished(formData: FormData): Promise<void> {
       published: !article.published,
       publishedAt: !article.published ? (article.publishedAt ?? new Date()) : article.publishedAt,
     },
-  });
-
-  revalidatePath("/");
-  revalidatePath("/admin");
-}
-
-export async function toggleFeatured(formData: FormData): Promise<void> {
-  await requireAdmin();
-
-  const id = Number(formData.get("id"));
-  const article = await prisma.article.findUniqueOrThrow({ where: { id } });
-
-  await prisma.article.update({
-    where: { id },
-    data: { featured: !article.featured },
   });
 
   revalidatePath("/");

@@ -36,7 +36,6 @@ export default async function EditArticlePage({
           coverImageUrl: article.coverImageUrl,
           categoryId: article.categoryId,
           published: article.published,
-          featured: article.featured,
         }}
       />
     </div>
