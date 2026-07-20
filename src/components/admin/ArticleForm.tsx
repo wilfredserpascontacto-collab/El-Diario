@@ -2,6 +2,7 @@
 
 import { useActionState } from "react";
 import type { ArticleFormState } from "@/app/admin/(protected)/actions";
+import { RichTextEditor } from "@/components/admin/RichTextEditor";
 
 type Category = { id: number; name: string };
 
@@ -90,16 +91,10 @@ export function ArticleForm({ action, categories, submitLabel, initialValues }: 
         />
       </label>
 
-      <label className="flex flex-col gap-1 text-sm font-medium text-gray-700 dark:text-gray-300">
+      <div className="flex flex-col gap-1 text-sm font-medium text-gray-700 dark:text-gray-300">
         Contenido *
-        <textarea
-          name="content"
-          required
-          rows={12}
-          defaultValue={initialValues?.content}
-          className="rounded border border-gray-300 px-3 py-2 font-mono text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-red-500 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100"
-        />
-      </label>
+        <RichTextEditor name="content" initialContent={initialValues?.content} />
+      </div>
 
       <div className="flex gap-6">
         <label className="flex items-center gap-2 text-sm text-gray-700 dark:text-gray-300">

@@ -3,6 +3,9 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { getArticleBySlug } from "@/lib/articles";
+import { RichContent } from "@/components/RichContent";
+import { sanitizeArticleHtml } from "@/lib/sanitize";
+import { plainTextToHtml } from "@/lib/content";
 
 export const dynamic = "force-dynamic";
 
@@ -72,11 +75,7 @@ export default async function ArticlePage({
         </div>
       )}
 
-      <div className="flex flex-col gap-4 text-lg leading-relaxed text-gray-800 dark:text-gray-200">
-        {article.content.split("\n\n").map((paragraph, index) => (
-          <p key={index}>{paragraph}</p>
-        ))}
-      </div>
+      <RichContent html={sanitizeArticleHtml(plainTextToHtml(article.content))} />
     </article>
   );
 }
