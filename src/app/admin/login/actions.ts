@@ -25,7 +25,13 @@ export async function login(
   const cookieStore = await cookies();
   cookieStore.set(getSessionCookieName(), createSessionToken(), {
     httpOnly: true,
-    secure: process.env.NODE_ENV === "production",
+    // Solo se marca como "Secure" si el sitio corre bajo HTTPS (variable
+    // COOKIE_SECURE=true en el entorno). Mientras el sitio esté en HTTP
+    // (ej. el subdominio *.sslip.io sin certificado propio), el navegador
+    // descarta silenciosamente cualquier cookie "Secure", lo que hacía
+    // que la sesión de admin nunca se guardara y el login pareciera un
+    // bucle infinito.
+    secure: process.env.COOKIE_SECURE === "true",
     sameSite: "lax",
     path: "/",
     maxAge: 60 * 60 * 24 * 7,
