@@ -36,10 +36,10 @@ export function FeedCard({ article }: { article: FeedCardArticle }) {
         <span className="w-fit rounded bg-red-600 px-2 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-white">
           {article.category.name}
         </span>
-        <h2 className="text-lg font-bold leading-snug text-gray-900 group-hover:underline dark:text-gray-50">
+        <h2 className="text-2xl font-bold leading-snug text-gray-900 group-hover:underline dark:text-gray-50">
           {article.title}
         </h2>
-        <p className="line-clamp-2 text-sm text-gray-600 dark:text-gray-400">
+        <p className="line-clamp-2 text-base text-gray-600 dark:text-gray-400">
           {article.excerpt}
         </p>
         {article.publishedAt && (
