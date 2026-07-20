@@ -16,7 +16,7 @@ export function FeedCard({ article }: { article: FeedCardArticle }) {
       href={`/noticia/${article.slug}`}
       className="group flex flex-col gap-3 border-b border-gray-200 py-6 first:pt-0 dark:border-gray-800"
     >
-      <div className="relative aspect-square w-full overflow-hidden rounded-md bg-gray-100 dark:bg-gray-900">
+      <div className="relative aspect-[4/3] w-full overflow-hidden rounded-md bg-gray-100 dark:bg-gray-900">
         {article.coverImageUrl ? (
           <Image
             src={article.coverImageUrl}
